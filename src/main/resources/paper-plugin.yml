@@ -1,0 +1,4 @@
+name: pipebomb
+version: '1.0-SNAPSHOT'
+main: zip.sodium.pipebomb.Pipebomb
+api-version: '1.21'
