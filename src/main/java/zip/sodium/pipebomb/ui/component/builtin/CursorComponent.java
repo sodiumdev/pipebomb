@@ -8,6 +8,7 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.level.block.Blocks;
 import org.bukkit.craftbukkit.entity.CraftPlayer;
 import org.jetbrains.annotations.NotNull;
+import org.joml.Vector2f;
 import org.joml.Vector3f;
 import zip.sodium.pipebomb.ui.Screen;
 import zip.sodium.pipebomb.ui.component.ScreenComponent;
@@ -15,6 +16,8 @@ import zip.sodium.pipebomb.util.EntityUtil;
 import zip.sodium.pipebomb.util.VectorUtil;
 
 public final class CursorComponent implements ScreenComponent {
+    private static final Vector2f SCALE = new Vector2f(0.0125F);
+
     private Display.BlockDisplay cursor;
 
     @Override
@@ -25,20 +28,7 @@ public final class CursorComponent implements ScreenComponent {
         cursor = EntityUtil.create(EntityType.BLOCK_DISPLAY, level, entity -> {
             entity.setBrightnessOverride(Brightness.FULL_BRIGHT);
             entity.getEntityData().set(Display.DATA_POS_ROT_INTERPOLATION_DURATION_ID, 1);
-            entity.setTransformation(new Transformation(
-                    new Vector3f(
-                            -0.0125F / 2,
-                            -0.0125F / 2,
-                            0
-                    ),
-                    null,
-                    new Vector3f(
-                            0.0125F,
-                            0.0125F,
-                            VectorUtil.ALMOST_ZERO
-                    ),
-                    null
-            ));
+            entity.setTransformation(VectorUtil.scaledCentered(SCALE));
             entity.setBlockState(Blocks.WHITE_CONCRETE.defaultBlockState());
             entity.setPos(
                     handle.getEyePosition().add(

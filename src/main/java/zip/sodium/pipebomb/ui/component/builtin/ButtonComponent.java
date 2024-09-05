@@ -113,7 +113,7 @@ public class ButtonComponent implements ScreenComponent {
             entity.setBrightnessOverride(Brightness.FULL_BRIGHT);
             entity.setTransformationInterpolationDuration(2);
             entity.getEntityData().set(Display.DATA_POS_ROT_INTERPOLATION_DURATION_ID, 1);
-            entity.setTransformation(VectorUtil.scaled(scale));
+            entity.setTransformation(VectorUtil.scaledCentered(scale));
             entity.setBlockState(Blocks.GRAY_CONCRETE.defaultBlockState());
             entity.setPos(
                     basePosition.add(0, 0, VectorUtil.behind(3))

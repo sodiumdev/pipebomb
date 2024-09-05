@@ -13,7 +13,7 @@ public interface ScreenComponent {
     default void tick(final @NotNull Screen screen) {}
     default void cleanup(final @NotNull Screen screen) {}
 
-    default boolean removeIf(final @NotNull Screen entity) {
+    default boolean shouldRemove(final @NotNull Screen screen) {
         return false;
     }
 }

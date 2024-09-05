@@ -27,26 +27,27 @@ public final class UiCommand {
         if (!(executor instanceof Player player))
             return 0;
 
-        final var screen = new Screen(player);
+        final var screen = Screen.create(player);
         screen.addComponent(new CursorComponent());
 
         screen.addComponent(
                 LogoComponent.builder()
-                        .position(-150, -75)
+                        .position(-75, 0)
                         .build()
         );
 
         screen.addComponent(
                 ButtonComponent.builder()
-                        .position(50, -40)
+                        .position(75, -40)
                         .scale(0.24F, 0.12F)
                         .label(Component.text("Play"))
+                        .onClick(Screen::close)
                         .build()
         );
 
         screen.addComponent(
                 ButtonComponent.builder()
-                        .position(50, 0)
+                        .position(75, 0)
                         .scale(0.24F, 0.12F)
                         .label(Component.text("Credits"))
                         .build()
@@ -54,13 +55,14 @@ public final class UiCommand {
 
         screen.addComponent(
                 ButtonComponent.builder()
-                        .position(50, 40)
+                        .position(75, 40)
                         .scale(0.24F, 0.12F)
                         .label(Component.text("Quit"))
+                        .onClick(s -> s.player().kick())
                         .build()
         );
 
-        PlayerScreenHolder.add(screen);
+        screen.open();
 
         return 1;
     }

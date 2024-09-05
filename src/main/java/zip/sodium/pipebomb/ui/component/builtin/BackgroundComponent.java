@@ -13,7 +13,7 @@ import zip.sodium.pipebomb.ui.component.ScreenComponent;
 import zip.sodium.pipebomb.util.EntityUtil;
 import zip.sodium.pipebomb.util.VectorUtil;
 
-public final class BackgroundComponent implements ScreenComponent {
+public class BackgroundComponent implements ScreenComponent {
     private Display.BlockDisplay background;
 
     @Override
@@ -24,7 +24,7 @@ public final class BackgroundComponent implements ScreenComponent {
         background = EntityUtil.create(EntityType.BLOCK_DISPLAY, level, entity -> {
             entity.setBrightnessOverride(Brightness.FULL_BRIGHT);
             entity.getEntityData().set(Display.DATA_POS_ROT_INTERPOLATION_DURATION_ID, 1);
-            entity.setTransformation(VectorUtil.scaled(new Vector2f(10)));
+            entity.setTransformation(VectorUtil.scaledCentered(new Vector2f(10)));
             entity.setBlockState(Blocks.BLACK_CONCRETE.defaultBlockState());
             entity.setPos(
                     VectorUtil.add(handle.getEyePosition(), 0, 0)

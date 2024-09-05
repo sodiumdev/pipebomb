@@ -7,7 +7,7 @@ import org.joml.Vector2f;
 import org.joml.Vector3f;
 
 public final class VectorUtil {
-    public static final float ALMOST_ZERO = 0.00001f;
+    public static final float ALMOST_ZERO = 0.001f;
 
     public static final double XY_FACTOR = -7 / 900F;
     public static final double Y_BIAS = 1.025;
@@ -16,13 +16,26 @@ public final class VectorUtil {
         throw new UnsupportedOperationException();
     }
 
-    public static Transformation scaled(final Vector2f scale) {
+    public static Transformation scaledCentered(final Vector2f scale) {
         return new Transformation(
                 new Vector3f(
                         scale.x * -0.5F,
                         scale.y * -0.5F,
                         0
                 ),
+                null,
+                new Vector3f(
+                        scale.x,
+                        scale.y,
+                        ALMOST_ZERO
+                ),
+                null
+        );
+    }
+
+    public static Transformation scaled(final Vector2f scale) {
+        return new Transformation(
+                null,
                 null,
                 new Vector3f(
                         scale.x,

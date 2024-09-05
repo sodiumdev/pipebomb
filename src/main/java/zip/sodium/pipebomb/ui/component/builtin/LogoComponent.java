@@ -1,6 +1,7 @@
 package zip.sodium.pipebomb.ui.component.builtin;
 
 import com.google.common.base.Preconditions;
+import com.mojang.math.Transformation;
 import net.minecraft.util.Brightness;
 import net.minecraft.world.entity.Display;
 import net.minecraft.world.entity.Entity;
@@ -11,6 +12,7 @@ import org.bukkit.craftbukkit.entity.CraftPlayer;
 import org.jetbrains.annotations.NotNull;
 import org.joml.Vector2d;
 import org.joml.Vector2f;
+import org.joml.Vector3f;
 import zip.sodium.pipebomb.ui.Screen;
 import zip.sodium.pipebomb.ui.component.ScreenComponent;
 import zip.sodium.pipebomb.util.EntityUtil;
